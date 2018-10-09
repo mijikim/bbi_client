@@ -1,0 +1,13 @@
+.error-alert {
+  margin: 0 1rem 1rem;
+  text-align: left;
+  font-size: .7rem;
+  border: .1rem solid coral;
+  background-color: lightpink;
+  border-radius: .2rem;
+  color: brown;
+}
+
+.error-alert .error {
+  padding-left: 1rem;
+}

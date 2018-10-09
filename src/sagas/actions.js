@@ -1,3 +1,4 @@
 export default {
   LOGIN_USER: 'LOGIN_USER',
+  SEARCH_CHARACTERS: 'SEARCH_CHARACTERS'
 };

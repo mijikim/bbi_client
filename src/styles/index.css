@@ -1,18 +1,42 @@
+:root {
+  --orange: #ee6123;
+  --light-orange: #fdefe9;
+  --dark-grey: #444444;
+  --light-grey: #9b9b9b;
+  --lightest-grey: #ececec;
+  --blue: #55b1dc;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+a {
+  text-decoration: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 fieldset {
   border: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+button {
+  border-radius: 0;
+  padding: .5rem;
 }

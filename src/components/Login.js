@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import actions from '../sagas/actions';
 import { addErrors, clearError } from '../reducers/errors';
+import { activateSpinner } from '../reducers/spinner';
 import ErrorAlert from './ErrorAlert';
 
 class Login extends Component {
@@ -12,14 +13,21 @@ class Login extends Component {
   
   onLoginClick = () => {
     const { accessToken } = this.state;
-    const { loginUser, addErrors, clearError } = this.props;
+    const { loginUser, addErrors, clearError, activateSpinner } = this.props;
     clearError();
     if (!accessToken || accessToken.length === 0) {
       addErrors(['Access token field is empty.']);
     } else {
+      activateSpinner();
       loginUser(accessToken);
     }
-  };
+  }
+
+  onTokenChange = e => {
+    const { clearError } = this.props;
+    clearError();
+    this.setState({ accessToken: e.target.value });
+  }
   
   render() {
     const { redirectToReferrer, isAuthenticated } = this.props;
@@ -38,13 +46,11 @@ class Login extends Component {
             type='password'
             className={'password-input'}
             value={this.state.accessToken}
-            onChange={e => {
-              this.setState({ accessToken: e.target.value });
-            }}
+            onChange={this.onTokenChange}
           />
         </fieldset>
-        <button onClick={this.onLoginClick}>Login</button>
         <ErrorAlert errors={this.props.errors}/>
+        <button onClick={this.onLoginClick}>Login</button>
       </div>
     )
   }
@@ -57,6 +63,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  activateSpinner: () => dispatch(activateSpinner()),
   addErrors: (errors) => dispatch(addErrors(errors)),
   clearError: () => dispatch(clearError()),
   loginUser: (accessToken) => dispatch({ type: actions.LOGIN_USER, payload: { accessToken } }),
