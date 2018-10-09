@@ -3,20 +3,16 @@ import Api from '../api';
 import actions from './actions';
 import { updateSession } from '../reducers/session';
 import { addErrors } from '../reducers/errors';
-
-const errorMessageMap = {
-  'access denied': 'Invalid access token.',
-  'invalid id': 'Invalid id supplied.'
-};
+import { errorMessageMap } from '../utils/maps';
 
 export function* loginUserSaga(action) {
   try {
     const { accessToken } = action.payload;
     // Since there isn't auth endpoint, try to fetch a character
     // and see if we get authentication error
-    const { response, error } = { response: 'success' };
+    // const { response, error } = { response: 'success' };
     // TODO: fix fetch call from being blocked by CORS
-    // const { response, error } = yield call(Api.fetchCharacter, { accessToken, id: 1 });
+    const { response, error } = yield call(Api.fetchCharacter, { accessToken, id: 1 });
     if (response === 'error') {
       yield put(updateSession({ isAuthenticated: false }));
       yield put(addErrors([errorMessageMap[error]]));
