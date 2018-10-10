@@ -29,7 +29,7 @@ export function* searchCharactersSaga(action) {
       }
     }
   } catch(e) {
-    yield put(addErrors(['Something went wrong. Please try again.']));
+    yield put(addErrors([errorMessageMap.general]));
   }
   yield put(deactivateSpinner());
 }

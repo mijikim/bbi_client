@@ -19,7 +19,7 @@ export function* loginUserSaga(action) {
       yield put(updateSession({ isAuthenticated: true, redirectToReferrer: true }));
     }
   } catch(e) {
-    yield put(addErrors(['Something went wrong. Please try again.']));
+    yield put(addErrors([errorMessageMap.general]));
   }
   yield put(deactivateSpinner());
 }
