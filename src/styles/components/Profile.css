@@ -1,0 +1,26 @@
+.profile {
+  border: .1rem solid black;
+  display: flex;
+  height: 3rem;
+}
+
+.profile--selected {
+  background-color: var(--light-orange);
+}
+
+.profile-picture {
+  flex-grow: 1;
+}
+
+.profile-picture img {
+  height: 3rem;
+}
+
+.profile-info {
+  flex-grow: 2;
+  display: flex;
+}
+
+.profile-info p {
+  margin: 0 1rem;
+}

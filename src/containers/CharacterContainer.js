@@ -7,7 +7,7 @@ class CharacterContainer extends Component {
     const { character } = this.props;
     return character ? (
       <div>
-        <img src={character.image.url} />
+        <img alt='character-profile' src={character.image.url} />
         <h3>{character.name}</h3>
       </div>
     ) : null;

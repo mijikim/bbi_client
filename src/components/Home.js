@@ -18,7 +18,6 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <h1>HOME</h1>
         <SearchContainer type='hero' />
         <SearchContainer type='villain' />
         <ErrorAlert errors={this.props.errors}/>

@@ -35,13 +35,15 @@ export const getCharactersByType = createSelector(
   }
 );
 
+export const getSelectedIdByType = createSelector(
+  [getCharacterType, getSelectedIds],
+  (type, selectedIds) => selectedIds[type]
+);
+
 export const getCharacterByType = createSelector(
-  [getCharacterType, getCharacters, getSelectedIds],
-  (type, allCharacters, selectedIds) => {
-    console.log(type, allCharacters, selectedIds)
-    // console.log(selectedIds[type]);
-    // console.log(allCharacters[selectedIds[type]]);
-    return allCharacters[selectedIds[type]];
+  [getSelectedIdByType, getCharacters],
+  (id, allCharacters) => {
+    return allCharacters[id];
   }
 );
 

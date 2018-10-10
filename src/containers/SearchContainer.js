@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCharactersByType } from '../selectors/characters';
-import { setSelectedCharacter } from '../reducers/characters';
-import actions from "../sagas/actions";
-import {addErrors} from "../reducers/errors";
+import actions from '../sagas/actions';
+import { addErrors } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
+import { setSelectedCharacter } from '../reducers/characters';
+import { getCharactersByType, getSelectedIdByType } from '../selectors/characters';
+import Profile from '../components/Profile';
 
 class SearchContainer extends Component {
   state = {
@@ -27,16 +28,13 @@ class SearchContainer extends Component {
     setSelectedCharacter({ type, id });
   }
 
-  // TODO: extract below out to a separate component showing data per spec.
   getCharacters = () => {
-    const { characters, searchBy, type } = this.props;
+    const { characters, searchBy, type, selectedId } = this.props;
     if (searchBy[type]) {
-      return characters && characters.length > 0 ? characters.map(char => {
-        const { name, id } = char;
+      return characters && characters.length > 0 ? characters.map(character => {
+        const { id } = character;
         return (
-          <div key={id} onClick={this.onCharacterSelect(id)}>
-            <span>{name}</span>
-          </div>
+          <Profile key={id} data={character} onClickHandler={this.onCharacterSelect(id)} selected={selectedId === id}/>
         )
       }) : <div><p>No character was found</p></div>;
     }
@@ -62,6 +60,7 @@ class SearchContainer extends Component {
 const mapStateToProps = (state, props) => ({
   characters: getCharactersByType(state, props),
   searchBy: state.search.searchBy,
+  selectedId: getSelectedIdByType(state, props),
 });
 
 const mapDispatchToProps = dispatch => ({
