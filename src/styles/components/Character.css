@@ -1,8 +1,8 @@
-.character-info img {
+.character img {
   height: 25rem;
 }
 
-.character-info {
+.character {
   display: flex;
   padding: 1rem;
 }
@@ -12,4 +12,6 @@
   text-transform: capitalize;
   font-size: 2rem;
   flex-grow: 2;
+  background-color: white;
+  padding: .1rem 0;
 }

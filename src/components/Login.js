@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import actions from '../sagas/actions';
 import { addErrors, clearError } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
@@ -59,6 +60,16 @@ class Login extends Component {
     )
   }
 }
+
+Login.propTypes = {
+  errors: PropTypes.array,
+  redirectToReferrer: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
+  activateSpinner: PropTypes.func,
+  addErrors: PropTypes.func,
+  clearError: PropTypes.func,
+  loginUser: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   errors: state.errors.messages,

@@ -1,8 +1,12 @@
 .profile {
-  border: .1rem solid black;
   display: flex;
   height: 6rem;
   background-color: white;
+}
+
+.profile:hover {
+  background-color: var(--light-orange);
+  border: none;
 }
 
 .profile .name {
@@ -13,6 +17,7 @@
 
 .profile--selected {
   background-color: var(--light-orange);
+  border: none;
 }
 
 .profile-picture {

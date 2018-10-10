@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addErrors } from '../reducers/errors';
 import { clearSelected } from '../reducers/characters';
 import CharacterContainer from '../containers/CharacterContainer';
@@ -22,6 +23,14 @@ class Result extends Component {
       </div>
     )
   }
+}
+
+Result.propTypes = {
+  errors: PropTypes.array,
+  addErrors: PropTypes.func,
+  history: PropTypes.object,
+  selected: PropTypes.object,
+  clearSelected: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

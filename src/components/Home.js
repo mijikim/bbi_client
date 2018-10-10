@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addErrors, clearError } from '../reducers/errors';
-import ErrorAlert from './ErrorAlert';
 import SearchContainer from '../containers/SearchContainer';
+import ErrorAlert from './ErrorAlert';
 import '../styles/components/Home.css';
 
 class Home extends Component {
@@ -26,6 +27,13 @@ class Home extends Component {
       </div>
     )
   }
+}
+
+Home.propTypes = {
+  history: PropTypes.object,
+  selected: PropTypes.object,
+  addError: PropTypes.func,
+  clearError: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import Picture from './Picture';
 import Info from './Info';
 import '../styles/components/Profile.css';
@@ -17,6 +18,12 @@ const Profile = (props) => {
       </div>
     </div>
   )
+};
+
+Profile.propTypes = {
+  data: PropTypes.object,
+  selected: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired,
 };
 
 export default Profile

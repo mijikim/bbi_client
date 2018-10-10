@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Picture from './Picture';
 import Info from './Info';
 import '../styles/components/Character.css';
@@ -10,13 +11,13 @@ const Character = (props) => {
     const info = [];
     [powerstats, appearance].forEach((data, index) => {
       if (data) {
-        info.push(<Info key={index} data={appearance} className={'character-appearance'} />);
+        info.push(<Info key={index} data={appearance} className={'character-info'} />);
       }
     });
     return info;
   };
   return (
-    <div className='character-info'>
+    <div className='character'>
       <Picture className='character-picture' url={image.url} />
       <div className='character-details'>
         <p>Name: {name}</p>
@@ -25,6 +26,10 @@ const Character = (props) => {
       </div>
     </div>
   )
+};
+
+Character.propTypes = {
+  data: PropTypes.object,
 };
 
 export default Character

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import PrivateRoute from './PrivateRoute';
 import Login from './Login';
 import Home from './Home';
 import Result from './Result';
-import PrivateRoute from './PrivateRoute';
 import '../styles/components/App.css';
 
 class App extends Component {
@@ -24,5 +25,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isLoading: PropTypes.bool,
+};
 
 export default withRouter(connect(state => ({ isLoading: state.spinner.default }))(App));

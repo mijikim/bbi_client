@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import actions from '../sagas/actions';
 import { addErrors, clearError } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
@@ -43,10 +44,20 @@ class SearchContainer extends Component {
   getProfiles = () => {
     const { characters, searchBy, type, selectedId } = this.props;
     if (searchBy[type]) {
-      return characters && characters.length > 0 ? characters.map(character => {
+      const insertLine = (index) => {
+        return characters.length > 1 && index !== characters.length - 1;
+      };
+      return characters && characters.length > 0 ? characters.map((character, index) => {
         const { id } = character;
         return (
-          <Profile key={id} data={character} onClickHandler={this.onCharacterSelect(id)} selected={selectedId === id}/>
+          <div key={id}>
+            <Profile
+              data={character}
+              onClickHandler={this.onCharacterSelect(id)}
+              selected={selectedId === id}
+            />
+            {insertLine(index) && <hr />}
+          </div>
         )
       }) : <div><p>No character was found</p></div>;
     }
@@ -65,13 +76,24 @@ class SearchContainer extends Component {
           className='search-input'
         />
         <button onClick={this.onSearchClick}>SEARCH</button>
-        <div className='search-list'>
+        <div className='profile-list'>
           {profiles}
         </div>
       </div>
     )
   }
 }
+
+SearchContainer.propTypes = {
+  activateSpinner: PropTypes.func,
+  addErrors: PropTypes.func,
+  characters: PropTypes.array,
+  clearError: PropTypes.func,
+  searchBy: PropTypes.object,
+  searchCharacters: PropTypes.func,
+  selectedId: PropTypes.string,
+  setSelectedCharacter: PropTypes.func,
+};
 
 const mapStateToProps = (state, props) => ({
   characters: getCharactersByType(state, props),

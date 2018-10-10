@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getCharacterByType } from '../selectors/characters';
 import Character from '../components/Character';
 
@@ -13,6 +14,10 @@ class CharacterContainer extends Component {
     ) : null;
   }
 }
+
+CharacterContainer.propTypes = {
+  character: PropTypes.object,
+};
 
 const mapStateToProps = (state, props) => ({
   character: getCharacterByType(state, props),
