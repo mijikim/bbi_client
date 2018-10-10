@@ -7,7 +7,7 @@ class CharacterContainer extends Component {
   render() {
     const { character } = this.props;
     return character ? (
-      <div className={'character-wrapper'}>
+      <div className={`character-${this.props.type}`}>
         <Character data={character}/>
       </div>
     ) : null;

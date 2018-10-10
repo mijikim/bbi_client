@@ -1,0 +1,29 @@
+.result {
+  display: grid;
+  grid-template-columns: repeat(4, [cols] 1fr);
+  grid-template-rows: 1fr 60rem 1fr;
+}
+
+.character-hero {
+  grid-column: 3 / 2 span;
+  grid-row-start: 2;
+  padding-left: 0 !important;
+}
+
+.character-villain {
+  grid-column: 1 / 2 span;
+  grid-row-start: 2;
+}
+
+.result button {
+  grid-column-start: 3;
+  grid-row-start: 3;
+  align-self: center;
+}
+
+.result .title {
+  grid-row-start: 1;
+  font-size: 2rem;
+  padding: 1rem;
+  font-weight: 600;
+}

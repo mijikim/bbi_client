@@ -1,0 +1,21 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(4, [cols] 1fr);
+  grid-template-rows: 60rem 1fr;
+}
+
+.search-hero {
+  grid-column: 3 / 2 span;
+  grid-row-start: 1;
+  padding-left: 0 !important;
+}
+
+.search-villain {
+  grid-column: 1 / 2 span;
+  grid-row-start: 1;
+}
+
+.home button {
+  grid-column-start: 3;
+  align-self: center;
+}

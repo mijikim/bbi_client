@@ -4,9 +4,12 @@
 
 .character-info {
   display: flex;
+  padding: 1rem;
 }
 
 .character-details p {
   margin: 0 1rem;
   text-transform: capitalize;
+  font-size: 2rem;
+  flex-grow: 2;
 }

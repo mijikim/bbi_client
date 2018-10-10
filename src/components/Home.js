@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addErrors, clearError } from '../reducers/errors';
 import ErrorAlert from './ErrorAlert';
 import SearchContainer from '../containers/SearchContainer';
+import '../styles/components/Home.css';
 
 class Home extends Component {
   onCompareClick = () => {
@@ -17,7 +18,7 @@ class Home extends Component {
 
   render () {
     return (
-      <div>
+      <div className='home'>
         <SearchContainer type='hero' />
         <SearchContainer type='villain' />
         <ErrorAlert errors={this.props.errors}/>

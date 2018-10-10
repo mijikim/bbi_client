@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../sagas/actions';
-import { addErrors } from '../reducers/errors';
+import { addErrors, clearError } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
 import { setSelectedCharacter } from '../reducers/characters';
 import { getCharactersByType, getSelectedIdByType } from '../selectors/characters';
 import Profile from '../components/Profile';
+import '../styles/containers/SearchContainer.css';
 
 class SearchContainer extends Component {
   state = {
     name: '',
+  }
+
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.onSearchClick();
+    }
   }
 
   onSearchChange = (e) => {
@@ -18,9 +25,14 @@ class SearchContainer extends Component {
 
   onSearchClick = () => {
     const { name } = this.state;
-    const { searchCharacters, type, activateSpinner } = this.props;
-    activateSpinner();
-    searchCharacters({ name, type });
+    const { searchCharacters, type, activateSpinner, addErrors, clearError } = this.props;
+    clearError();
+    if (name.length === 0) {
+      addErrors(['Name is missing.'])
+    } else {
+      activateSpinner();
+      searchCharacters({ name, type });
+    }
   }
 
   onCharacterSelect = id => () => {
@@ -28,7 +40,7 @@ class SearchContainer extends Component {
     setSelectedCharacter({ type, id });
   }
 
-  getCharacters = () => {
+  getProfiles = () => {
     const { characters, searchBy, type, selectedId } = this.props;
     if (searchBy[type]) {
       return characters && characters.length > 0 ? characters.map(character => {
@@ -41,17 +53,21 @@ class SearchContainer extends Component {
   }
 
   render() {
-    const characters = this.getCharacters();
+    const profiles = this.getProfiles();
     return (
-      <div>
-        <h3>{this.props.type}</h3>
+      <div className={`search-${this.props.type}`} id='search'>
+        <div className='title'>{this.props.type}</div>
         <input
-          placeholder='Please type a name to search by'
+          placeholder='Type a name to search by'
           onChange={this.onSearchChange}
+          onKeyPress={this.onKeyPress}
           value={this.state.name || ''}
+          className='search-input'
         />
         <button onClick={this.onSearchClick}>SEARCH</button>
-        {characters}
+        <div className='search-list'>
+          {profiles}
+        </div>
       </div>
     )
   }
@@ -66,6 +82,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = dispatch => ({
   activateSpinner: () => dispatch(activateSpinner()),
   addErrors: (errors) => dispatch(addErrors(errors)),
+  clearError: () => dispatch(clearError()),
   searchCharacters: (data) => dispatch({ type: actions.SEARCH_CHARACTERS, payload: data }),
   setSelectedCharacter: (id) => dispatch(setSelectedCharacter(id))
 });

@@ -11,8 +11,8 @@ const Profile = (props) => {
   return (
     <div className={profileClass} onClick={onClickHandler}>
       <Picture className='profile-picture' url={image.url} />
+      <p className='name'>{name}</p>
       <div className='profile-info'>
-        <p>{name}</p>
         {powerstats && <Info data={powerstats} className={'profile-stats'} />}
       </div>
     </div>

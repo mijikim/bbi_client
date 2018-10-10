@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addErrors } from '../reducers/errors';
 import { clearSelected } from '../reducers/characters';
 import CharacterContainer from '../containers/CharacterContainer';
+import '../styles/components/Result.css';
 
 class Result extends Component {
   onBackToSearchClick = () => {
@@ -13,8 +14,8 @@ class Result extends Component {
 
   render () {
     return (
-      <div>
-        <h1>RESULT</h1>
+      <div className='result'>
+        <div className='title'>RESULT</div>
         <CharacterContainer type='hero' />
         <CharacterContainer type='villain' />
         <button onClick={this.onBackToSearchClick}>BACK TO SEARCH</button>
