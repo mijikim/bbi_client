@@ -1,15 +1,5 @@
-:root {
-  --orange: #ee6123;
-  --light-orange: #fdefe9;
-  --dark-grey: #444444;
-  --light-grey: #9b9b9b;
-  --lightest-grey: #ececec;
-  --blue: #55b1dc;
-}
-
 html {
   font-size: 62.5%;
-  height: 100%;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
@@ -18,25 +8,6 @@ body {
   padding: 0;
 }
 
-a {
-  text-decoration: none;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-fieldset {
-  border: none;
-  margin: 0;
-  padding: 1rem;
-}
-
-input {
-  box-sizing: border-box;
-}
-
-button {
-  border-radius: 0;
-  padding: .5rem;
+html, body, #root {
+  height: 100%;
 }

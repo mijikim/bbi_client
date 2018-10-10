@@ -5,6 +5,7 @@ import actions from '../sagas/actions';
 import { addErrors, clearError } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
 import ErrorAlert from './ErrorAlert';
+import '../styles/components/Login.css';
 
 class Login extends Component {
   state = {
@@ -37,20 +38,23 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <div className='login'>
+        <div className='title'>Welcome Cadet</div>
         <fieldset className='login-field'>
-          <label className='login-label' htmlFor='field'>ACCESS TOKEN</label>
+          <label className='login-label' htmlFor='field'>Acess Token</label>
           <input
             autoFocus
-            id='password'
+            id='token'
             type='password'
-            className={'password-input'}
+            className='token-input'
             value={this.state.accessToken}
             onChange={this.onTokenChange}
           />
         </fieldset>
         <ErrorAlert errors={this.props.errors}/>
-        <button onClick={this.onLoginClick}>Login</button>
+        <div className='container'>
+          <button className='login-button' onClick={this.onLoginClick}>Login</button>
+        </div>
       </div>
     )
   }
