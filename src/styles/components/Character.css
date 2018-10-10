@@ -1,0 +1,12 @@
+.character-info img {
+  height: 25rem;
+}
+
+.character-info {
+  display: flex;
+}
+
+.character-details p {
+  margin: 0 1rem;
+  text-transform: capitalize;
+}

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCharacterByType } from '../selectors/characters';
+import Character from '../components/Character';
 
 class CharacterContainer extends Component {
   render() {
     const { character } = this.props;
     return character ? (
-      <div>
-        <img alt='character-profile' src={character.image.url} />
-        <h3>{character.name}</h3>
+      <div className={'character-wrapper'}>
+        <Character data={character}/>
       </div>
     ) : null;
   }

@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import Picture from './Picture';
+import Info from './Info';
 import '../styles/components/Profile.css';
 
 const Profile = (props) => {
@@ -8,16 +10,10 @@ const Profile = (props) => {
   const profileClass = classNames('profile', { 'profile--selected': selected });
   return (
     <div className={profileClass} onClick={onClickHandler}>
-      <div className='profile-picture'>
-        <img alt='character' src={image.url} />
-      </div>
+      <Picture className='profile-picture' url={image.url} />
       <div className='profile-info'>
         <p>{name}</p>
-        {
-          powerstats && Object.keys(powerstats).map(key => {
-            return <p className='profile-stats' key={key}>{key}: {powerstats[key]}</p>
-          })
-        }
+        {powerstats && <Info data={powerstats} className={'profile-stats'} />}
       </div>
     </div>
   )

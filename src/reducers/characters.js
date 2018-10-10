@@ -21,6 +21,6 @@ export default charactersDuck.createReducer({
   [SET_SELECTED]: (state, action) =>
     ({ ...state, selected: { ...state.selected, [action.payload.type]: action.payload.id } })
   ,
-  [ADD_CHARACTERS]: (state, action) =>
-    ({ ...state, characters: { ...state.characters, ...action.payload } })
+  [ADD_CHARACTERS]: (state, action) => ({ ...state, characters: { ...state.characters, ...action.payload } }),
+  [CLEAR_SELECTED]: (state, action) => ({ ...state, selected: { hero: '', villain: '' } }),
 }, initialState);
