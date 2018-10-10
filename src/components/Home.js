@@ -7,7 +7,7 @@ import '../styles/components/Home.css';
 
 class Home extends Component {
   onCompareClick = () => {
-    const { history, selected, addErrors } = this.props;
+    const { history, selected, addErrors, clearError } = this.props;
     clearError();
     if (selected.hero && selected.villain) {
       history.push('/compare');
@@ -22,7 +22,7 @@ class Home extends Component {
         <SearchContainer type='hero' />
         <SearchContainer type='villain' />
         <ErrorAlert errors={this.props.errors}/>
-        <button onClick={this.onCompareClick}>COMPARE</button>
+        <button className='compare-button' onClick={this.onCompareClick}>COMPARE</button>
       </div>
     )
   }
