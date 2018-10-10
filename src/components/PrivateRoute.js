@@ -21,7 +21,7 @@ const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
 
 PrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool,
-  component: PropTypes.object,
+  component: PropTypes.func,
 };
 
 const mapStateToProps = state => ({ isAuthenticated: state.session.isAuthenticated });
