@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/bbi_client/static/css/main.8245fd2a.chunk.css"
   },
   {
-    "revision": "f097f917a794ce99c950837ce682f889",
+    "revision": "2f687ca3b40babbe33d798294f0c86b7",
     "url": "/bbi_client/index.html"
   }
 ];
