@@ -15,8 +15,9 @@ a {
   text-decoration: none;
 }
 
-button:hover {
+button:hover, button:focus {
   cursor: pointer;
+  background-color: var(--light-grey);
 }
 
 fieldset {
@@ -32,4 +33,7 @@ input {
 button {
   border-radius: 0;
   padding: .5rem;
+  background-color: var(--dark-grey);
+  color: white;
+  border: none;
 }
