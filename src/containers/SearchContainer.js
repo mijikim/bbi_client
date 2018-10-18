@@ -6,7 +6,8 @@ import { addErrors, clearError } from '../reducers/errors';
 import { activateSpinner } from '../reducers/spinner';
 import { setSelectedCharacter } from '../reducers/characters';
 import { getCharactersByType, getSelectedIdByType } from '../selectors/characters';
-import Profile from '../components/Profile';
+import ProfileList from '../components/ProfileList';
+import { errorMessageMap } from '../utils/maps';
 import '../styles/containers/SearchContainer.css';
 
 class SearchContainer extends Component {
@@ -29,42 +30,21 @@ class SearchContainer extends Component {
     const { searchCharacters, type, activateSpinner, addErrors, clearError } = this.props;
     clearError();
     if (name.length === 0) {
-      addErrors(['Name is missing.'])
+      addErrors([errorMessageMap.missingName])
     } else {
       activateSpinner();
       searchCharacters({ name, type });
     }
   }
 
-  onCharacterSelect = id => () => {
+  onCharacterSelect = id => {
     const { type, setSelectedCharacter } = this.props;
     setSelectedCharacter({ type, id });
   }
 
-  getProfiles = () => {
-    const { characters, searchBy, type, selectedId } = this.props;
-    if (searchBy[type]) {
-      const insertLine = (index) => {
-        return characters.length > 1 && index !== characters.length - 1;
-      };
-      return characters && characters.length > 0 ? characters.map((character, index) => {
-        const { id } = character;
-        return (
-          <div key={id}>
-            <Profile
-              data={character}
-              onClickHandler={this.onCharacterSelect(id)}
-              selected={selectedId === id}
-            />
-            {insertLine(index) && <hr />}
-          </div>
-        )
-      }) : <div><p>No character was found</p></div>;
-    }
-  }
-
   render() {
-    const profiles = this.getProfiles();
+    const { characters, searchBy, type, selectedId } = this.props;
+    const profileListProps = { characters, searchBy, type, selectedId };
     return (
       <div className={`search-${this.props.type}`} id='search'>
         <div className='title'>{this.props.type}</div>
@@ -76,9 +56,7 @@ class SearchContainer extends Component {
           className='search-input'
         />
         <button onClick={this.onSearchClick}>SEARCH</button>
-        <div className='profile-list'>
-          {profiles}
-        </div>
+        <ProfileList {...profileListProps} onCharacterSelect={this.onCharacterSelect}/>
       </div>
     )
   }

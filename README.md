@@ -18,6 +18,10 @@ This will run the app in the production mode at [http://localhost:5000](http://l
 
 This project was developed in unix environment using node v10.0.8 and npm v6.3.0.
 
+## To obtain an access token
+
+Access token can be retrieve by going to [https://superheroapi.com/](https://superheroapi.com/).
+
 ## Login
 
 To obtain user's access token data, Login page was built. When user tries to
@@ -80,6 +84,8 @@ By default, the tests are ran with jest so jest syntax are utilized.
 
 ## Improvements
 
+- Create error message handler that takes in key as an argument. If no matching error is found
+or no key is provided, return general error message. 
 - Allow profile options to be tabbable for better UX
 - Add more styling to the application and add transitioning effects
 - Provide an ability for a user to choose a theme for the application. A module such as

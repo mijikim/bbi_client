@@ -42,7 +42,7 @@ class Login extends Component {
       <div className='login'>
         <div className='title'>Welcome Cadet</div>
         <fieldset className='login-field'>
-          <label className='login-label' htmlFor='field'>Acess Token</label>
+          <label className='login-label' htmlFor='field'>Access Token</label>
           <input
             autoFocus
             id='token'

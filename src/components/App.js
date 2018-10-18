@@ -30,4 +30,6 @@ App.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default withRouter(connect(state => ({ isLoading: state.spinner.default }))(App));
+const mapStateToProps = state => ({ isLoading: state.spinner.default });
+
+export default withRouter(connect(mapStateToProps)(App));

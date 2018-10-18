@@ -7,7 +7,7 @@ const handleErrors = (response) => {
 
 // Need proxy url to bypass "No Access-Control-Allow-Origin header” error
 // when making request to api from the browser
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const proxyUrl = 'https://salty-gorge-69054.herokuapp.com/';
 const prefix = `${proxyUrl}http://superheroapi.com/api/`;
 
 const getAccessToken = () => window.atob(window.sessionStorage.getItem('accessToken'));
@@ -15,13 +15,7 @@ const constructUrl = (accessToken = getAccessToken()) => `${prefix}${accessToken
 
 export default {
   fetchCharacter({ accessToken, id }) {
-    const url = constructUrl(accessToken);
-    return fetch(`${url}/${id}/`, {
-      headers: {
-        Accept: `text/html,application/xhtml+xml,application/xml`,
-        'Access-Control-Request-Method': 'GET'
-      }
-    })
+    return fetch(`${constructUrl(accessToken)}/${id}/`)
       .then(handleErrors)
       .then(response => { return response.json() })
   },

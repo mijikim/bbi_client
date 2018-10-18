@@ -4,10 +4,9 @@ import '../styles/components/ErrorAlert.css';
 
 const ErrorAlert = (props) => {
   const { errors } = props;
-  return errors && errors.length > 0 ? (<div className='error-alert'>
-    {errors.map((err, index) => {
-      return <p className='error' key={index}>{err}</p>
-    })}
+  return errors && errors.length > 0 ? (
+    <div className='error-alert'>
+      {errors.map((err, index) => <p className='error' key={index}>{err}</p>)}
   </div>) : null;
 };
 

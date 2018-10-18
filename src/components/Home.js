@@ -30,10 +30,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  history: PropTypes.object,
-  selected: PropTypes.object,
   addError: PropTypes.func,
   clearError: PropTypes.func,
+  history: PropTypes.object,
+  selected: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
